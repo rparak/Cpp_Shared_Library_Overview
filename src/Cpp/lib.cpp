@@ -4,6 +4,9 @@
 
 // https://peaku.co/questions/22798-pasar-un-vector-matriz-de-c%2B%2B-no-administrado-a-c%23
 // g++ -shared -fPIC -o libhello.so hello.cpp
+// https://stackoverflow.com/questions/2923272/how-to-convert-vector-to-array
+// vector -> []
+// [] -> vector
 /*
 extern "C" int Add(int a, int b) {
   return a + b;
