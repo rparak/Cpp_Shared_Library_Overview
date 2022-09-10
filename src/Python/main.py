@@ -2,6 +2,7 @@
 import ctypes as ct
 from types import DynamicClassAttribute
 
+# https://stackoverflow.com/questions/4351721/python-ctypes-passing-a-struct-to-a-function-as-a-pointer-to-get-back-data
 __dll_lib = ct.cdll.LoadLibrary('lib.dll')
 #print(__dll_lib.Add(5, 6))
 
