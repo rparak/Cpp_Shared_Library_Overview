@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\romanp\\Desktop\\Test\\Csharp\\app\\app.csproj": {}
+    "C:\\Users\\romanp\\Documents\\GitHub\\Cpp_DLL_Helper\\src\\Csharp\\App\\app.csproj": {}
   },
   "projects": {
-    "C:\\Users\\romanp\\Desktop\\Test\\Csharp\\app\\app.csproj": {
+    "C:\\Users\\romanp\\Documents\\GitHub\\Cpp_DLL_Helper\\src\\Csharp\\App\\app.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\romanp\\Desktop\\Test\\Csharp\\app\\app.csproj",
+        "projectUniqueName": "C:\\Users\\romanp\\Documents\\GitHub\\Cpp_DLL_Helper\\src\\Csharp\\App\\app.csproj",
         "projectName": "app",
-        "projectPath": "C:\\Users\\romanp\\Desktop\\Test\\Csharp\\app\\app.csproj",
+        "projectPath": "C:\\Users\\romanp\\Documents\\GitHub\\Cpp_DLL_Helper\\src\\Csharp\\App\\app.csproj",
         "packagesPath": "C:\\Users\\romanp\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\romanp\\Desktop\\Test\\Csharp\\app\\obj\\",
+        "outputPath": "C:\\Users\\romanp\\Documents\\GitHub\\Cpp_DLL_Helper\\src\\Csharp\\App\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

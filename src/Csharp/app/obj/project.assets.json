@@ -14,11 +14,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\romanp\\Desktop\\Test\\Csharp\\app\\app.csproj",
+      "projectUniqueName": "C:\\Users\\romanp\\Documents\\GitHub\\Cpp_DLL_Helper\\src\\Csharp\\app\\app.csproj",
       "projectName": "app",
-      "projectPath": "C:\\Users\\romanp\\Desktop\\Test\\Csharp\\app\\app.csproj",
+      "projectPath": "C:\\Users\\romanp\\Documents\\GitHub\\Cpp_DLL_Helper\\src\\Csharp\\app\\app.csproj",
       "packagesPath": "C:\\Users\\romanp\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\romanp\\Desktop\\Test\\Csharp\\app\\obj\\",
+      "outputPath": "C:\\Users\\romanp\\Documents\\GitHub\\Cpp_DLL_Helper\\src\\Csharp\\app\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
