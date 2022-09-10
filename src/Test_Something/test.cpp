@@ -3,6 +3,14 @@
 #include <algorithm>
 #include <iterator>
 #include <vector>
+
+// https://www.educative.io/courses/learn-cpp-from-scratch/B8RZpnG51VY
+// https://en.wikiversity.org/wiki/C%2B%2B/Simple_Math
+// https://www.geeksforgeeks.org/calculator-using-classes-in-cpp/
+
+// https://stackoverflow.com/questions/315051/using-a-class-defined-in-a-c-dll-in-c-sharp-code
+
+
 // https://stephenscotttucker.medium.com/interfacing-python-with-c-using-ctypes-classes-and-arrays-42534d562ce7
 
 // g++ -shared -std=c++17 -fPIC -o test.dll test.cpp
