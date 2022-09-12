@@ -4,6 +4,19 @@
 #include <tuple>
 #include <vector>
 // g++ -std=c++17 test_lib.cpp -o test_lib -ldl
+/*
+#include "Example_lib.hpp"
+// g++ -std=c++17 test_lib.cpp -o test_lib -ldl
+int main()
+{
+    int arr[5] = {16, 2, 77, 40, 120};
+
+    int max_value, max_index;
+    auto [max_value, max_index] = Example_lib::Max<int>(arr);
+
+    return 0;
+}
+*/
 int main()
 {
     std::tuple<int, int> x(1, 8);
