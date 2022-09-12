@@ -7,6 +7,7 @@
 // https://www.educative.io/courses/learn-cpp-from-scratch/B8RZpnG51VY
 // https://en.wikiversity.org/wiki/C%2B%2B/Simple_Math
 // https://www.geeksforgeeks.org/calculator-using-classes-in-cpp/
+// https://github.com/0Tsolak/Qsort/blob/main/qsort.cpp, https://cplusplus.com/reference/algorithm/swap/, https://www.youtube.com/watch?v=kFeXwkgnQ9U
 
 // https://stackoverflow.com/questions/315051/using-a-class-defined-in-a-c-dll-in-c-sharp-code
 
