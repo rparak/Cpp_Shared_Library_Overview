@@ -11,10 +11,35 @@ int main()
 {
     int arr[5] = {16, 2, 77, 40, 120};
 
-    int max_value, max_index;
+    //int max_value, max_index;
+    //std::tie(max_value, max_index) = Example_lib::Max<int>(arr);
+
     auto [max_value, max_index] = Example_lib::Max<int>(arr);
 
+    std::cout << max_value << " " << max_index << std::endl;
     return 0;
+}
+
+#include <iostream>
+#include <tuple>
+// sudo apt-get install libboost-all-dev
+#include <boost/range/adaptor/indexed.hpp>
+
+namespace Example_lib{
+    /*
+    template <typename T> std::tuple<T, int> Max(T x[]){
+        std::tuple<T, int> max_x(x[0], 0);
+        for (auto const& x_i : x | boost::adaptors::indexed(0)){
+            std::cout << x_i.value() << x_i.index() << std::endl;
+        }
+
+        return max_x;
+    }
+    */
+
+    template <typename T> std::tuple<T, int> Max(T* x){
+        return {x[0], x[1]};
+    }
 }
 */
 int main()
