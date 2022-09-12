@@ -1,0 +1,52 @@
+#include "Example_lib.hpp"
+#include <boost/range/adaptor/indexed.hpp>
+// g++ -std=c++17 test_lib.cpp -o test_lib -ldl
+int main()
+{
+    int arr[5] = {16, 2, 77, 40, 120};
+
+    //std::vector<int> arr{16, 2, 77, 40, 120};
+    //int max_value, max_index;
+    //std::tie(max_value, max_index) = Example_lib::Max<int>(arr);
+
+    for(auto x_i : arr | boost::adaptors::indexed(0)){
+        std::cout << x_i.value() << std::endl;
+    }
+
+    //std::cout << std::size(arr) << std::endl;
+
+
+    auto [max_value, max_index] = Example_lib::Max<int>(arr);
+
+    std::cout << max_value << " " << max_index << std::endl;
+    return 0;
+}
+
+#include <iostream>
+#include <tuple>
+#include <vector>
+// sudo apt-get install libboost-all-dev
+#include <boost/range/adaptor/indexed.hpp>
+
+namespace Example_lib{
+    /*
+    template <typename T> std::tuple<T, int> Max(T x[]){
+        std::tuple<T, int> max_x(x[0], 0);
+        for (auto const& x_i : x | boost::adaptors::indexed(0)){
+            std::cout << x_i.value() << x_i.index() << std::endl;
+        }
+
+        return max_x;
+    }
+    */
+
+    template <typename T> std::tuple<T, int> Max(T* x){
+        std::vector<T> vec_values(x, x + sizeof(x) / sizeof(T));
+
+        for (auto const& x_i : vec_values | boost::adaptors::indexed(0)){
+            std::cout << x_i.value() << x_i.index() << std::endl;
+        }
+
+        return {x[0], x[1]};
+    }
+}
