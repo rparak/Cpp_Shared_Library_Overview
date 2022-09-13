@@ -9,9 +9,11 @@ int main()
     //int max_value, max_index;
     //std::tie(max_value, max_index) = Example_lib::Max<int>(arr);
 
+    /*
     for(auto x_i : arr | boost::adaptors::indexed(0)){
         std::cout << x_i.value() << std::endl;
     }
+    */
 
     //std::cout << std::size(arr) << std::endl;
 
@@ -19,8 +21,22 @@ int main()
     auto [max_value, max_index] = Example_lib::Max<int>(arr);
 
     std::cout << max_value << " " << max_index << std::endl;
+
+    Example_lib::Input_Min<int> test_x;
+    test_x.x = arr;
+    test_x.N = sizeof(arr)/sizeof(arr[0]);
+
+    std::cout << test_x.N << std::endl;
+
+    //Example_lib::Output_Min<int> test_y;
+    Example_lib::Output_Min<int> test_y = Example_lib::Min(&test_x);
+
+    std::cout << test_y.min_value << std::endl;
+    std::cout << test_y.min_value_idx << std::endl;
+
     return 0;
 }
+
 
 #include <iostream>
 #include <tuple>
@@ -29,24 +45,41 @@ int main()
 #include <boost/range/adaptor/indexed.hpp>
 
 namespace Example_lib{
-    /*
-    template <typename T> std::tuple<T, int> Max(T x[]){
-        std::tuple<T, int> max_x(x[0], 0);
-        for (auto const& x_i : x | boost::adaptors::indexed(0)){
-            std::cout << x_i.value() << x_i.index() << std::endl;
+    template<typename T, std::size_t N> std::tuple<T, int> Max(T (&x)[N]){
+        T max_val = x[0]; int max_val_idx = 0;
+        for(auto i = 1; i < N; ++i){
+            if(max_val < x[i]){
+                max_val     = x[i];
+                max_val_idx = i;
+            }
         }
 
-        return max_x;
+        return {max_val, max_val_idx};
     }
-    */
 
-    template <typename T> std::tuple<T, int> Max(T* x){
-        std::vector<T> vec_values(x, x + sizeof(x) / sizeof(T));
+    template <typename T> 
+    struct Output_Min{
+        T min_value;
+        int min_value_idx;
+    };
 
-        for (auto const& x_i : vec_values | boost::adaptors::indexed(0)){
-            std::cout << x_i.value() << x_i.index() << std::endl;
+    template <typename T> 
+    struct Input_Min{
+        T *x;
+        size_t N;
+    };
+
+    template <typename T> Output_Min<T> Min(Input_Min<T> *x){
+        Output_Min<T> y;
+        y.min_value = x->x[0]; y.min_value_idx = 0;
+
+        for(auto i = 1; i < x->N; ++i){
+            if(y.min_value > x->x[i]){
+                y.min_value     = x->x[i];
+                y.min_value_idx = i;
+            }
         }
 
-        return {x[0], x[1]};
+       return y;
     }
 }
