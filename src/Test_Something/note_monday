@@ -24,7 +24,7 @@ int main()
 
     Example_lib::Input_Min<int> test_x;
     test_x.x = arr;
-    test_x.N = sizeof(arr)/sizeof(arr[0]);
+    test_x.N    = std::size(arr);
 
     std::cout << test_x.N << std::endl;
 
@@ -37,7 +37,6 @@ int main()
     return 0;
 }
 
-
 #include <iostream>
 #include <tuple>
 #include <vector>
@@ -45,18 +44,6 @@ int main()
 #include <boost/range/adaptor/indexed.hpp>
 
 namespace Example_lib{
-    template<typename T, std::size_t N> std::tuple<T, int> Max(T (&x)[N]){
-        T max_val = x[0]; int max_val_idx = 0;
-        for(auto i = 1; i < N; ++i){
-            if(max_val < x[i]){
-                max_val     = x[i];
-                max_val_idx = i;
-            }
-        }
-
-        return {max_val, max_val_idx};
-    }
-
     template <typename T> 
     struct Output_Min{
         T min_value;
@@ -68,6 +55,19 @@ namespace Example_lib{
         T *x;
         size_t N;
     };
+
+
+    template<typename T, std::size_t N> std::tuple<T, int> Max(T (&x)[N]){
+        T max_val = x[0]; int max_val_idx = 0;
+        for(auto i = 1; i < N; ++i){
+            if(max_val < x[i]){
+                max_val     = x[i];
+                max_val_idx = i;
+            }
+        }
+
+        return {max_val, max_val_idx};
+    }
 
     template <typename T> Output_Min<T> Min(Input_Min<T> *x){
         Output_Min<T> y;
