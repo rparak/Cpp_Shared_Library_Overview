@@ -43,6 +43,9 @@ int main()
 // sudo apt-get install libboost-all-dev
 #include <boost/range/adaptor/indexed.hpp>
 
+#include <iostream>
+#include <tuple>
+
 namespace Example_lib{
     template <typename T> 
     struct Output_Min{
@@ -82,4 +85,21 @@ namespace Example_lib{
 
        return y;
     }
+
+
+    template <typename T>
+    class Class_Example_1 {
+        public:
+            // Initialization of input parameters
+            explicit Class_Example_1(const T param_1, const T param_2, const std::string name) 
+                : __param_1(param_1), __param_2(param_2), __name(name)
+            {}
+            ~Class_Example_1()
+            {}
+
+        private:
+            T __param_1{0};
+            T __param_2{0};
+            T __name{"None"};
+    };
 }
