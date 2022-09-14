@@ -1,3 +1,33 @@
+#include "Example_lib.hpp"
+#include <boost/range/adaptor/indexed.hpp>
+// g++ -std=c++17 test_lib.cpp -o test_lib -ldl
+int main()
+{
+    int arr[5] = {16, 2, 77, 40, 120};
+
+    auto [max_value, max_index] = Example_lib::Max<int>(arr);
+
+    std::cout << max_value << " " << max_index << std::endl;
+
+    Example_lib::Input_Min<int> test_x;
+    test_x.x = arr;
+    test_x.N    = std::size(arr);
+
+    std::cout << test_x.N << std::endl;
+
+    Example_lib::Output_Min<int> test_y = Example_lib::Min(&test_x);
+
+    std::cout << test_y.min_value << std::endl;
+    std::cout << test_y.min_value_idx << std::endl;
+
+    Example_lib::Class_Example_1<int> Cls_Example_1{1, 5};
+    std::cout << Cls_Example_1.Get_Parameters() << std::endl;
+    std::cout << Cls_Example_1.Addition() << std::endl;
+    std::cout << Cls_Example_1.Substraction() << std::endl;
+
+    return 0;
+}
+
 #include <iostream>
 #include <tuple>
 
@@ -41,84 +71,30 @@ namespace Example_lib{
        return y;
     }
 
-
     template <typename T>
     class Class_Example_1 {
         public:
             // Initialization of input parameters
-            explicit Class_Example_1(const T param_1, const T param_2, const std::string& name) 
-                : __param_1(param_1), __param_2(param_2), __name(name)
+            explicit Class_Example_1(const T param_1, const T param_2) 
+                : __param_1(param_1), __param_2(param_2)
             {}
             ~Class_Example_1()
             {}
 
-            std::string Get_Name();
-            T Addition();
-            T Substraction();
+            std::string Get_Parameters(){
+                return std::string("Parameter 1: ") + std::to_string(this->__param_1) + "\nParameter 2: " + std::to_string(this->__param_2);
+            }
+
+            T Addition(){ 
+                return this->__param_1 + this->__param_2; 
+            }
+
+            T Substraction() { 
+                return this->__param_1 - this->__param_2;
+            }
+
         private:
             T __param_1{0};
             T __param_2{0};
-            std::string __name{"None"};
     };
-
-    template <typename T> 
-    std::string Class_Example_1<T>::Get_Name(){
-        return this->__name;
-    }
-
-    template <typename T> 
-    T Class_Example_1<T>::Addition(){
-        return this->__param_1 + this->__param_2;
-    }
-
-    template <typename T> 
-    T Class_Example_1<T>::Substraction(){
-        return this->__param_1 - this->__param_2;
-    }
-}
-
-#include "Example_lib.hpp"
-#include <boost/range/adaptor/indexed.hpp>
-// g++ -std=c++17 test_lib.cpp -o test_lib -ldl
-int main()
-{
-    int arr[5] = {16, 2, 77, 40, 120};
-
-    //std::vector<int> arr{16, 2, 77, 40, 120};
-    //int max_value, max_index;
-    //std::tie(max_value, max_index) = Example_lib::Max<int>(arr);
-
-    /*
-    for(auto x_i : arr | boost::adaptors::indexed(0)){
-        std::cout << x_i.value() << std::endl;
-    }
-    */
-
-    //std::cout << std::size(arr) << std::endl;
-
-
-    auto [max_value, max_index] = Example_lib::Max<int>(arr);
-
-    std::cout << max_value << " " << max_index << std::endl;
-
-    Example_lib::Input_Min<int> test_x;
-    test_x.x = arr;
-    test_x.N    = std::size(arr);
-
-    std::cout << test_x.N << std::endl;
-
-    //Example_lib::Output_Min<int> test_y;
-    Example_lib::Output_Min<int> test_y = Example_lib::Min(&test_x);
-
-    std::cout << test_y.min_value << std::endl;
-    std::cout << test_y.min_value_idx << std::endl;
-
-
-    Example_lib::Class_Example_1<int> Cls_Example_1{1, 5, "Test_str"};
-
-    std::cout << Cls_Example_1.Get_Name() << std::endl;
-    std::cout << Cls_Example_1.Addition() << std::endl;
-    std::cout << Cls_Example_1.Substraction() << std::endl;
-
-    return 0;
 }
