@@ -1,6 +1,7 @@
 #include <iostream>
 #include <tuple>
 #include <ctime>
+#include <vector>
 
 namespace Example_Lib{
     template <typename T> 
@@ -26,15 +27,16 @@ namespace Example_Lib{
         return output;
     }
 
-    template<typename T, std::size_t N> std::tuple<T, int> Max(const T (&x)[N]){
-        T max_val = x[0]; int max_val_idx = 0;
-        for(auto i = 1; i < N; ++i){
-            if(max_val < x[i]){
-                max_val     = x[i];
+    template<typename T> std::tuple<T, int> Max(std::vector<T> x){
+        T max_val; int max_val_idx = 0; int i = 0;
+        for(const auto& x_i : x){
+            if(max_val < x_i){
+                max_val     = x_i;
                 max_val_idx = i;
             }
+            ++i;
         }
-
+        
         return {max_val, max_val_idx};
     }
 

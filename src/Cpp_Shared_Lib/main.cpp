@@ -1,11 +1,18 @@
 #include "Example_Lib.hpp"
 
+int Get_Fist_Value(int *x){
+    std::cout << *(&x + 1) - x << std::endl;
+    return x[0];
+}
+
 // g++ -std=c++17 main.cpp -o main -ldl
 int main()
 {
     const size_t SIZE = 5;
 
     auto *arr_1 = Example_Lib::Generate_Random_Array<int>(1, 100, SIZE);
+
+    std::vector<int> x_v(arr_1, arr_1 + SIZE);
 
     int arr_n[SIZE];
     std::copy(arr_1, arr_1 + SIZE, arr_n);
@@ -14,7 +21,7 @@ int main()
         std::cout << arr_n[i] << std::endl;
     }
 
-    auto [max_value, max_index] = Example_Lib::Max<int>(arr_n);
+    auto [max_value, max_index] = Example_Lib::Max<int>(x_v);
     std::cout << max_value << std::endl;
     std::cout << max_index << std::endl;
 
