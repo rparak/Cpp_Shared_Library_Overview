@@ -3,6 +3,7 @@
 // g++ -shared -std=c++17 -fPIC -o DLL/Example_Lib_Shared.dll Example_Lib_Shared.hpp
 // g++ -shared -std=c++17 -fPIC -o SO/Example_Lib_Shared.so Example_Lib_Shared.hpp
 
+// probably use only struct for in/out
 extern "C" { 
     __declspec(dllexport) std::tuple<int, int> Max_Int(const int *x, const size_t N)
     {   
