@@ -1,4 +1,6 @@
-#include "Example_Lib.hpp"
+#include <iostream>
+#include <tuple>
+#include <ctime>
 
 // g++ -shared -std=c++17 -fPIC -o DLL/Example_Lib_Shared.dll Example_Lib_Shared.hpp
 // g++ -shared -std=c++17 -fPIC -o SO/Example_Lib_Shared.so Example_Lib_Shared.hpp
@@ -17,6 +19,64 @@ struct FCE_ARRAY_MinMax_OUTPUT_Str{
     int Index;
 };
 
+template <typename T>
+class Simple_Calculator {
+    public:
+        /*
+        // Initialization of input parameters
+        explicit Simple_Calculator(const T param_1, const T param_2) 
+            : __param_1(param_1), __param_2(param_2)
+        {}
+        ~Simple_Calculator()
+        {}
+        */
+
+        Simple_Calculator(T param_1, T param_2){
+            this->param_1 = param_1;
+            this->param_2 = param_2;
+        }
+
+        std::string Get_Parameters(){
+            return std::string("Parameter 1: ") + std::to_string(this->param_1) + "\nParameter 2: " + std::to_string(this->param_2);
+        }
+
+        T Addition(){ 
+            return this->param_1 + this->param_2; 
+        }
+
+        T Substraction() { 
+            return this->param_1 - this->param_2;
+        }
+
+    private:
+        T param_1{0};
+        T param_2{0};
+};
+
+
+template <typename T>
+class Test{
+     private:
+        T p1{0};
+        T p2{0};
+     public:
+        // Initialization of input parameters
+        explicit Test(T pp1, T pp2) 
+            : p1(pp1), p2(pp2)
+        {}
+        ~Test()
+        {}
+        void setInt(T k){
+            this->p1 = k;
+        }
+        int getInt(){
+            return this->p1;
+        }
+
+        int Addition(){ 
+            return this->p1 + this->p2; 
+        }
+};
 
 extern "C" { 
     __declspec(dllexport) int* Generate_Random_Array(const int MIN, const int MAX, const size_t N)
@@ -66,35 +126,53 @@ extern "C" {
        return Output;
     }
 
-    /*
-    __declspec(dllexport) std::tuple<int, int> Max_Int(const int *x, const size_t N)
-    {   
-        std::vector<int> x_v(x, x + N);
-        return Example_Lib::Max<int>(x_v);
-    }
+    // class
+    __declspec(dllexport) Simple_Calculator<int>* SC_Class_Create(const int Param_1, const int Param_2)
+	{
+		return new Simple_Calculator<int>(Param_1, Param_2);
+	}
 
-    __declspec(dllexport) int* Max_Int_Py(int *x, const size_t N)
-    {   
-        static int res[2]{x[0], 0};
-        for(int i = 1; i < N; ++i){
-            if(res[0] < x[i]){
-                res[0] = x[i];
-                res[1] = i;
-            }
+    __declspec(dllexport) void SC_Class_Delete(Simple_Calculator<int>* SC_Cls)
+	{
+        if(SC_Cls){
+		    delete SC_Cls;
+            SC_Cls = nullptr;
         }
-        return res;
+	}
+
+    __declspec(dllexport) std::string SC_Class_Get_Parameters(Simple_Calculator<int>* SC_Cls)
+	{
+        return SC_Cls->Get_Parameters();
+	}
+
+    __declspec(dllexport) int SC_Class_Addition_Parameters(Simple_Calculator<int>* SC_Cls, int result)
+	{
+        return SC_Cls->Addition();
+	}
+
+    __declspec(dllexport) int SC_Class_Substraction_Parameters(Simple_Calculator<int>* SC_Cls)
+	{
+        return SC_Cls->Substraction();
+	}
+
+
+
+    __declspec(dllexport) Test<int>* init(int k1, int k2) 
+    {
+        return new Test<int>(k1, k2);
     }
 
-    __declspec(dllexport) std::tuple<double, double> Max_Double(const double *x, const size_t N)
-    {   
-        std::vector<double> x_v(x, x + N);
-        return Example_Lib::Max<double>(x_v);
+    __declspec(dllexport) void setInt(Test<int>* self, int k) 
+    {
+        self->setInt(k);
     }
-    __declspec(dllexport) Example_Lib::Find_Min_Value_Output_str<int> Min_Int(Example_Lib::Find_Min_Value_Input_str<int> *x){
-        return Example_Lib::Min<int>(x);
+    __declspec(dllexport) int getInt(Test<int>* self) 
+    {
+        return self->getInt();
     }
-    __declspec(dllexport) Example_Lib::Find_Min_Value_Output_str<double> Min_Double(Example_Lib::Find_Min_Value_Input_str<double> *x){
-        return Example_Lib::Min<double>(x);
+
+    __declspec(dllexport) int Addition(Test<int>* self) 
+    {
+        return self->Addition();
     }
-    */
 }
