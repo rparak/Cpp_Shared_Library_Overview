@@ -22,35 +22,29 @@ struct FCE_ARRAY_MinMax_OUTPUT_Str{
 template <typename T>
 class Simple_Calculator {
     public:
-        /*
         // Initialization of input parameters
         explicit Simple_Calculator(const T param_1, const T param_2) 
             : __param_1(param_1), __param_2(param_2)
         {}
         ~Simple_Calculator()
         {}
-        */
 
-        Simple_Calculator(T param_1, T param_2){
-            this->param_1 = param_1;
-            this->param_2 = param_2;
-        }
 
         std::string Get_Parameters(){
-            return std::string("Parameter 1: ") + std::to_string(this->param_1) + "\nParameter 2: " + std::to_string(this->param_2);
+            return std::string("Parameter 1: ") + std::to_string(this->__param_1) + "\nParameter 2: " + std::to_string(this->__param_2);
         }
 
         T Addition(){ 
-            return this->param_1 + this->param_2; 
+            return this->__param_1 + this->__param_2; 
         }
 
         T Substraction() { 
-            return this->param_1 - this->param_2;
+            return this->__param_1 - this->__param_2;
         }
 
     private:
-        T param_1{0};
-        T param_2{0};
+        T __param_1{0};
+        T __param_2{0};
 };
 
 
@@ -145,7 +139,7 @@ extern "C" {
         return SC_Cls->Get_Parameters();
 	}
 
-    __declspec(dllexport) int SC_Class_Addition_Parameters(Simple_Calculator<int>* SC_Cls, int result)
+    __declspec(dllexport) int SC_Class_Addition_Parameters(Simple_Calculator<int>* SC_Cls)
 	{
         return SC_Cls->Addition();
 	}
@@ -156,10 +150,9 @@ extern "C" {
 	}
 
 
-
     __declspec(dllexport) Test<int>* init(int k1, int k2) 
     {
-        return new Test<int>(k1, k2);
+        return new Test(k1, k2);
     }
 
     __declspec(dllexport) void setInt(Test<int>* self, int k) 

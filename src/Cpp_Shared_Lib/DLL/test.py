@@ -53,7 +53,7 @@ __dll_lib.SC_Class_Delete.argtypes = [ct.c_void_p]
 __dll_lib.SC_Class_Delete.restype = ct.c_void_p
 
 __dll_lib.SC_Class_Get_Parameters.argtypes = [ct.c_void_p]
-__dll_lib.SC_Class_Get_Parameters.restype = ct.c_wchar_p
+#__dll_lib.SC_Class_Get_Parameters.restype = ct.c_wchar_p
 
 __dll_lib.SC_Class_Addition_Parameters.argtypes = [ct.c_void_p]
 __dll_lib.SC_Class_Addition_Parameters.restype = ct.c_int
@@ -64,15 +64,15 @@ __dll_lib.SC_Class_Substraction_Parameters.restype = ct.c_int
 
 SC_Cls = SC_Class_Create(12, 5)
 
-
-param_str = __dll_lib.SC_Class_Get_Parameters(SC_Cls)
 param_int_add  = __dll_lib.SC_Class_Addition_Parameters(SC_Cls)
 param_int_subs = __dll_lib.SC_Class_Substraction_Parameters(SC_Cls)
 
+param_str = __dll_lib.SC_Class_Get_Parameters(SC_Cls)
+
 print(param_int_add)
-print(type(param_str))
-print(type(param_int_add))
-print(type(param_int_subs))
+print(param_int_subs)
+print(param_str)
+
 
 
 __dll_lib.init.argtypes = [ct.c_int, ct.c_int]
