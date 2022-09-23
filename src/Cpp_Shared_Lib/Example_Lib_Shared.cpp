@@ -1,6 +1,7 @@
 #include <iostream>
 #include <tuple>
 #include <ctime>
+#include <cstring> 
 
 // g++ -shared -std=c++17 -fPIC -o DLL/Example_Lib_Shared.dll Example_Lib_Shared.hpp
 // g++ -shared -std=c++17 -fPIC -o SO/Example_Lib_Shared.so Example_Lib_Shared.hpp
@@ -30,8 +31,9 @@ class Simple_Calculator {
         {}
 
 
-        std::string Get_Parameters(){
-            return std::string("Parameter 1: ") + std::to_string(this->__param_1) + "\nParameter 2: " + std::to_string(this->__param_2);
+        char* Get_Parameters(){
+            std::string ss = std::string("Parameter 1: ");
+            return strdup(ss.data()); //+ std::to_string(this->__param_1) + "\nParameter 2: " + std::to_string(this->__param_2);
         }
 
         T Addition(){ 
@@ -134,7 +136,7 @@ extern "C" {
         }
 	}
 
-    __declspec(dllexport) std::string SC_Class_Get_Parameters(Simple_Calculator<int>* SC_Cls)
+    __declspec(dllexport) char* SC_Class_Get_Parameters(Simple_Calculator<int>* SC_Cls)
 	{
         return SC_Cls->Get_Parameters();
 	}
