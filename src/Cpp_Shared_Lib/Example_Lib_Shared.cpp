@@ -32,8 +32,8 @@ class Simple_Calculator {
 
 
         char* Get_Parameters(){
-            std::string ss = std::string("Parameter 1: ");
-            return strdup(ss.data()); //+ std::to_string(this->__param_1) + "\nParameter 2: " + std::to_string(this->__param_2);
+            std::string ss = std::string("Parameter 1: ") + std::to_string(this->__param_1) + "\nParameter 2: " + std::to_string(this->__param_2);
+            return strdup(ss.data());
         }
 
         T Addition(){ 
@@ -47,31 +47,6 @@ class Simple_Calculator {
     private:
         T __param_1{0};
         T __param_2{0};
-};
-
-
-template <typename T>
-class Test{
-     private:
-        T p1{0};
-        T p2{0};
-     public:
-        // Initialization of input parameters
-        explicit Test(T pp1, T pp2) 
-            : p1(pp1), p2(pp2)
-        {}
-        ~Test()
-        {}
-        void setInt(T k){
-            this->p1 = k;
-        }
-        int getInt(){
-            return this->p1;
-        }
-
-        int Addition(){ 
-            return this->p1 + this->p2; 
-        }
 };
 
 extern "C" { 
@@ -150,24 +125,4 @@ extern "C" {
 	{
         return SC_Cls->Substraction();
 	}
-
-
-    __declspec(dllexport) Test<int>* init(int k1, int k2) 
-    {
-        return new Test(k1, k2);
-    }
-
-    __declspec(dllexport) void setInt(Test<int>* self, int k) 
-    {
-        self->setInt(k);
-    }
-    __declspec(dllexport) int getInt(Test<int>* self) 
-    {
-        return self->getInt();
-    }
-
-    __declspec(dllexport) int Addition(Test<int>* self) 
-    {
-        return self->Addition();
-    }
 }

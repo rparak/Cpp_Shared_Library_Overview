@@ -71,31 +71,5 @@ param_str = __dll_lib.SC_Class_Get_Parameters(SC_Cls)
 
 print(param_int_add)
 print(param_int_subs)
-print(param_str)
-
-
-
-__dll_lib.init.argtypes = [ct.c_int, ct.c_int]
-__dll_lib.init.restype = ct.c_void_p
-
-__dll_lib.setInt.argtypes = [ct.c_void_p, ct.c_int]
-__dll_lib.setInt.restype = ct.c_void_p
-
-__dll_lib.getInt.argtypes = [ct.c_void_p]
-__dll_lib.getInt.restype = ct.c_int
-
-__dll_lib.Addition.argtypes = [ct.c_void_p]
-__dll_lib.Addition.restype = ct.c_int
-
-obj = __dll_lib.init(12, 5)
-
-res_x5 = __dll_lib.Addition(obj)
-print(type(res_x5))
-
-print(__dll_lib.getInt(obj))
-__dll_lib.setInt(obj, 150)
-print(__dll_lib.getInt(obj))
-
-print(__dll_lib.Addition(obj))
-
+print(param_str.decode('utf-8'))
 
