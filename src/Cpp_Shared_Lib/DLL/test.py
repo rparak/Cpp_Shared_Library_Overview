@@ -1,6 +1,11 @@
 import ctypes as ct
 from numpy.ctypeslib import ndpointer
 
+# https://www.auctoris.co.uk/2017/04/29/calling-c-classes-from-python-with-ctypes/
+# https://stephenscotttucker.medium.com/interfacing-python-with-c-using-ctypes-classes-and-arrays-42534d562ce7
+# https://solarianprogrammer.com/2019/07/18/python-using-c-cpp-libraries-ctypes/
+# https://kezunlin.me/post/41fe963e/
+
 class FCE_ARRAY_MinMax_INPUT_Str(ct.Structure):
     _fields_ = [('Array', ct.POINTER(ct.c_int)), ('N', ct.c_size_t)]
 
@@ -25,8 +30,6 @@ __dll_lib.Generate_Random_Array.restype = ct.POINTER(ct.c_int)
 res_0 = __dll_lib.Generate_Random_Array(1, 1000, 10)
 
 print(type(res_0))
-for i in range(0, 10):
-    print(res_0[i])
 
 __dll_lib.Multiply_Array_By_Number.argtypes = [ct.c_int, ct.POINTER(ct.c_int), ct.c_size_t]
 __dll_lib.Multiply_Array_By_Number.restype = None
@@ -35,8 +38,6 @@ py_values = [1, 2, 3, 4, 5]
 arr = (ct.c_int * len(py_values))(*py_values)
 __dll_lib.Multiply_Array_By_Number(ct.c_int(5), arr, ct.c_size_t(len(arr)))
 
-for i in range(0, len(arr)):
-    print(arr[i])
 
 """
 __dll_lib.Max_Int_Py.argtypes = (ct.POINTER(ct.c_int), ct.c_size_t)
