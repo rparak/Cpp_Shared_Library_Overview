@@ -182,7 +182,6 @@ extern "C" {
             (1) Number [int]: The number that is used to multiply the value in the array.
             (2) Array [int*]: Input/Output array of values.
             (3) N [size_t]: The size of the array.
-
         */
 
         int x_temp;
