@@ -20,7 +20,7 @@ SOFTWARE.
 Author   : Roman Parak
 Email    : Roman.Parak @outlook.com
 Github   : https://github.com/rparak
-File Name: Example_Lib_Shared.hpp
+File Name: Example_Lib_Shared.cpp
 ****************************************************************************/
 
 #include <iostream>
@@ -86,6 +86,7 @@ class Simple_Calculator {
         explicit Simple_Calculator(const T Parameter_1, const T Parameter_2) 
             : __Parameter_1(Parameter_1), __Parameter_2(Parameter_2)
         {}
+        
         // Destructor.
         ~Simple_Calculator()
         {}
