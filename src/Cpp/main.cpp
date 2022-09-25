@@ -83,9 +83,7 @@ int main() {
     SC_Class_Addition_Parameters_Typ SC_Class_Addition_Parameters = (SC_Class_Addition_Parameters_Typ)dlsym(Example_SL, "SC_Class_Addition_Parameters"); 
     SC_Class_Substraction_Parameters_Typ SC_Class_Substraction_Parameters = (SC_Class_Substraction_Parameters_Typ)dlsym(Example_SL, "SC_Class_Substraction_Parameters");
 
-    std::cout << "[INFO] =================================" << std::endl;
     std::cout << "[INFO] ===== Validation of Part 1. =====" << std::endl;
-    std::cout << "[INFO] =================================" << std::endl;
     // Generate a randomly defined array from the input parameters of the function.
     const size_t SIZE = 5;
     auto *Arr_Rand = Generate_Random_Array(1, 100, SIZE);
@@ -94,9 +92,7 @@ int main() {
     std::cout << "[INFO] Input Array: ";
     Display_Array<int>(Arr_Rand, SIZE, ", ");
 
-    std::cout << "[INFO] =================================" << std::endl;
     std::cout << "[INFO] ===== Validation of Part 2. =====" << std::endl;
-    std::cout << "[INFO] =================================" << std::endl;
     // Multiply each value in the input array by the defined number.
     int Number = 5;
     Multiply_Array_By_Number(Number, Arr_Rand, SIZE);
@@ -105,9 +101,7 @@ int main() {
     std::cout << "[INFO] Multiplied the input array by " << Number << ": ";
     Display_Array<int>(Arr_Rand, SIZE, ", ");
 
-    std::cout << "[INFO] =================================" << std::endl;
     std::cout << "[INFO] ===== Validation of Part 3. =====" << std::endl;
-    std::cout << "[INFO] =================================" << std::endl;
     // Declaration of the input structure for the Array_MinMax function.
     FCE_ARRAY_MinMax_INPUT_Str<int> ARRAY_MinMax_In;
     ARRAY_MinMax_In.Array = Arr_Rand;
@@ -118,15 +112,12 @@ int main() {
     FCE_ARRAY_MinMax_OUTPUT_Str<int> ARRAY_Min_Out = Array_MinMax(&ARRAY_MinMax_In, true);
     std::cout << "[INFO] The minimum number of an input array." << std::endl;
     std::cout << "[INFO] Value: " << ARRAY_Min_Out.Value << " | " << "Index: " << ARRAY_Min_Out.Index << std::endl;
-    // Function to return the number and index from a defined array of values.
     //   The minimum number.
     FCE_ARRAY_MinMax_OUTPUT_Str<int> ARRAY_Max_Out = Array_MinMax(&ARRAY_MinMax_In, false);
     std::cout << "[INFO] The maximum number of an input array." << std::endl;
     std::cout << "[INFO] Value: " << ARRAY_Max_Out.Value << " | " << "Index: " << ARRAY_Max_Out.Index << std::endl;
 
-    std::cout << "[INFO] =================================" << std::endl;
     std::cout << "[INFO] ===== Validation of Part 4. =====" << std::endl;
-    std::cout << "[INFO] =================================" << std::endl;
     // A simple class to demonstrate the calculator.
     Simple_Calculator<int>* Cls = SC_Class_Create(ARRAY_Min_Out.Value, ARRAY_Min_Out.Index);
 
@@ -151,6 +142,10 @@ int main() {
 
     // Delete a class object.
     SC_Class_Delete(Cls);
+
+    // Frees memory.
+    delete Arr_Rand;
+    Arr_Rand = NULL;
 
     // Close a dlopen object.
     dlclose(Example_SL);

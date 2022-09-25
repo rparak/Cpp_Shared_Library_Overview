@@ -118,10 +118,10 @@ extern "C" {
         Multiple functions to demonstrate how to work with a class to create a shared library. More information about the class 
         can be found above.
      */
-    typedef Simple_Calculator<int>* (*SC_Class_Create_Typ)(const int Param_1, const int Param_2);
+    typedef Simple_Calculator<int>* (*SC_Class_Create_Typ)(const int Parameter_1, const int Parameter_2);
     typedef void (*SC_Class_Delete_Typ)(Simple_Calculator<int>* SC_Cls);
     typedef char* (*SC_Class_Get_Parameters_Typ)(Simple_Calculator<int>* SC_Cls);
-    typedef bool (*SC_Class_Set_Parameters_Typ)(Simple_Calculator<int>* SC_Cls, const int Param_1, const int Param_2);
+    typedef bool (*SC_Class_Set_Parameters_Typ)(Simple_Calculator<int>* SC_Cls, const int Parameter_1, const int Parameter_2);
     typedef int (*SC_Class_Addition_Parameters_Typ)(Simple_Calculator<int>* SC_Cls);
     typedef int (*SC_Class_Substraction_Parameters_Typ)(Simple_Calculator<int>* SC_Cls);
 }

@@ -39,27 +39,21 @@ def main():
         Demonstration of calling different functions/classes from a shared library (C/C++).
     """
 
-    print('[INFO] =================================')
     print('[INFO] ===== Validation of Part 1. =====')
-    print('[INFO] =================================')
     # Generate a randomly defined array from the input parameters of the function.
     Arr_Rand = Example_Lib_Shared.Generate_Random_Array(1, 100, 5)
     print(f'[INFO] Input Array: {Arr_Rand}')
 
-    print('[INFO] =================================')
     print('[INFO] ===== Validation of Part 2. =====')
-    print('[INFO] =================================')
     # Multiply each value in the input array by the defined number.
     Number = 3
     Arr_Mult_Num = Example_Lib_Shared.Multiply_Array_By_Number(Number, Arr_Rand)
     print(f'[INFO] Multiplied the input array by {Number}: {Arr_Mult_Num}')
 
-    print('[INFO] =================================')
     print('[INFO] ===== Validation of Part 3. =====')
-    print('[INFO] =================================')
     # Declaration of the input structure for the Array_MinMax function.
-    ARRAY_MinMax_In  = Example_Lib_Shared.FCE_ARRAY_MinMax_INPUT_Str((ct.c_int * len(Arr_Rand))(*Arr_Rand), 
-                                                                      ct.c_size_t(len(Arr_Rand)))
+    ARRAY_MinMax_In  = Example_Lib_Shared.FCE_ARRAY_MinMax_INPUT_Str((ct.c_int * len(Arr_Mult_Num))(*Arr_Mult_Num), 
+                                                                      ct.c_size_t(len(Arr_Mult_Num)))
     # Function to return the number and index from a defined array of values.
     #   The minimum number.
     ARRAY_Min_Out = Example_Lib_Shared.Array_MinMax(ARRAY_MinMax_In, True)
@@ -70,9 +64,7 @@ def main():
     print('[INFO] The maximum number of an input array.')
     print(f'[INFO] Value: {ARRAY_Max_Out.Value} | Index: {ARRAY_Max_Out.Index}')
 
-    print('[INFO] =================================')
     print('[INFO] ===== Validation of Part 4. =====')
-    print('[INFO] =================================')
     # A simple class to demonstrate the calculator.
     SC_Cls = Example_Lib_Shared.Simple_Calculator(ARRAY_Min_Out.Value, ARRAY_Min_Out.Index)
 

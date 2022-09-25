@@ -172,17 +172,7 @@ extern "C" {
 
         return Output;
     }
-
-    __declspec(dllexport) double* Generate_Random_Array_Double(const size_t N)
-    {
-        double* Output = new double[N];
-        for(auto i = 0; i < N; ++i){
-            Output[i] = 0.1 * (double)i;
-        }
-
-        return Output;
-    }
-
+    
      __declspec(dllexport) void Multiply_Array_By_Number(const int Number, int *Array, const size_t N) 
      { 
         /*
