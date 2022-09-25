@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "ZWlIU8h1uG0m6RHwylfV6O/Pra6ag5bQzSYzx5ZWGvMuqvpYsTUQG79u09BqLVAxxDUBU8zhpc56GU8d/geAag==",
+  "dgSpecHash": "yktohOJAKtxj5cySxU1TmdYrYEUCQ0XgR2YlFAEki4t44eVfW+ZSWJ24MyFqezLeFFuT3Sijf8+4QlIhoTt83A==",
   "success": true,
-  "projectFilePath": "C:\\Users\\romanp\\Documents\\GitHub\\Cpp_DLL_Helper\\src\\CSharp\\app\\app.csproj",
+  "projectFilePath": "C:\\Users\\romanp\\Documents\\GitHub\\Cpp_DLL_Helper\\src\\Csharp\\app\\app.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }
