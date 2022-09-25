@@ -34,7 +34,7 @@ import ctypes as ct
 CONST_SHARED_LIB_TYP = 'DLL'
 
 # Load the shared library (.dll/.so).
-Example_SL = ct.cdll.LoadLibrary(f'..//Cpp_Shared_Lib//{CONST_SHARED_LIB_TYP}//Example_Lib_Shared.dll')
+Example_SL = ct.cdll.LoadLibrary(f'..//..//Cpp_Shared_Lib//{CONST_SHARED_LIB_TYP}//Example_Lib_Shared.dll')
 
 """
 Description:

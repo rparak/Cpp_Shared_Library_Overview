@@ -37,7 +37,7 @@ namespace Example_Lib_Shared
         //   SO: Linux
         const string CONST_SHARED_LIB_TYP = "DLL";
         // The path to a shared library.
-        const string shared_lib_path = "..//..//Cpp_Shared_Lib//" + CONST_SHARED_LIB_TYP + "//Example_Lib_Shared.dll";
+        const string shared_lib_path = "..//..//..//Cpp_Shared_Lib//" + CONST_SHARED_LIB_TYP + "//Example_Lib_Shared.dll";
         
         // Generate a randomly defined array from the input parameters of the function.
         [DllImport(shared_lib_path, EntryPoint = "Generate_Random_Array", ExactSpelling = false, CallingConvention = CallingConvention.Cdecl)]
