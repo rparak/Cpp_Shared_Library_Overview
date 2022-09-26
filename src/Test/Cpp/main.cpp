@@ -60,7 +60,7 @@ int main() {
      */
 
     // The path to a shared library.
-    std::string shared_lib_path = "..//..//Cpp_Shared_Lib//" + CONST_SHARED_LIB_TYP + "//Example_Lib_Shared.dll";
+    std::string shared_lib_path = "..//..//Cpp_Shared_Lib//" + CONST_SHARED_LIB_TYP + "//Example_Lib_Shared." + CONST_SHARED_LIB_TYP;
 
     // Access to an executable object file (load the shared library - .dll/.so).
     void* Example_SL = dlopen(shared_lib_path.c_str(), RTLD_LAZY);

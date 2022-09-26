@@ -30,7 +30,7 @@ File Name: Example_Lib_Shared.hpp
 // Shared library type:
 //   DLL: Windows
 //   SO: Linux
-const std::string CONST_SHARED_LIB_TYP = "DLL";
+const std::string CONST_SHARED_LIB_TYP = "dll";
 
 /*
 Description:

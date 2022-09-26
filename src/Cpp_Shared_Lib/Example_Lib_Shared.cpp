@@ -28,11 +28,7 @@ Description:
     Define a shared library export for any platform.
  */
 #ifdef _WIN32
-# ifdef WIN_EXPORT
-#   define DLL_EXPORT_TYP __declspec(dllexport)
-# else
-#   define DLL_EXPORT_TYP __declspec(dllimport)
-# endif
+# define DLL_EXPORT_TYP __declspec(dllexport)
 #else
 # define DLL_EXPORT_TYP
 #endif
@@ -47,9 +43,9 @@ Description:
 
     Note:
         Windows:
-            $ g++ -shared -std=c++17 -fPIC -o DLL/Example_Lib_Shared.dll Example_Lib_Shared.cpp
+            $ g++ -shared -std=c++17 -fPIC -o dll/Example_Lib_Shared.dll Example_Lib_Shared.cpp
         Linux:
-            $ g++ -shared -std=c++17 -fPIC -o SO/Example_Lib_Shared.so Example_Lib_Shared.cpp
+            $ g++ -shared -std=c++17 -fPIC -o so/Example_Lib_Shared.so Example_Lib_Shared.cpp
  */
 
 

@@ -28,13 +28,21 @@ File Name: Example_Lib_Shared.py
 # CTypes (C compatible data types, and allows calling functions in DLLs)
 import ctypes as ct
 
+"""
+Note:
+    Windows:
+        $ py -3.6 main.py
+    Linux:
+        $ python3 main.py
+"""
+
 # Shared library type:
-#   DLL: Windows
-#   SO: Linux
-CONST_SHARED_LIB_TYP = 'DLL'
+#   dll: Windows
+#   so: Linux
+CONST_SHARED_LIB_TYP = 'dll'
 
 # Load the shared library (.dll/.so).
-Example_SL = ct.cdll.LoadLibrary(f'..//..//Cpp_Shared_Lib//{CONST_SHARED_LIB_TYP}//Example_Lib_Shared.dll')
+Example_SL = ct.cdll.LoadLibrary(f'..//..//Cpp_Shared_Lib//{CONST_SHARED_LIB_TYP}//Example_Lib_Shared.{CONST_SHARED_LIB_TYP}')
 
 """
 Description:
