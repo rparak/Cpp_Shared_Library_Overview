@@ -56,19 +56,15 @@ $ dotnet run
 **Repositary [/Cpp_Shared_Library_Overview/src]:**
 ```bash
 
-1\ 
-Description:
-    Shared library.
+Language = Cpp, Csharp/Main, Python;
+
+1\ Shared library.
 [/Cpp_Shared_Lib/]
 Cpp: Example_Lib_Shared.cpp
 DLL: Example_Lib_Shared.dll
 SO: Example_Lib_Shared.so
 
-2\ 
-Description:
-    Simple tests to verify functionality.
-    
-Language = Cpp, Csharp/Main, Python;
+2\ Simple tests to verify functionality.
 [/Test/{Language}/]
 Cpp: Example_Lib_Shared.hpp
 Cpp: main.cpp
