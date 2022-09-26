@@ -56,7 +56,7 @@ $ dotnet run
 **Repositary [/Cpp_Shared_Library_Overview/src]:**
 ```bash
 
-Language = Cpp, Csharp/Main, Python;
+Language = Cpp, Csharp/Main, Python
 
 1\ Shared library.
 [/Cpp_Shared_Lib/]
