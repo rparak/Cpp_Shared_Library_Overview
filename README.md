@@ -33,7 +33,7 @@ dotnet build
 A simple demonstration that shows how to create and export a shared library from a C/C++ programming language and import it into another programming language (Python, C#, C++).
 
 **Creating a shared C++ library:**
-```bash 
+```cpp 
 #include <iostream>
 #include <iterator>
 #include <vector>
