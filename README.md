@@ -27,6 +27,8 @@ The project can be used as a guide to create a custom application that is limite
 
 A good example is importing a shared library in the Unity3D simulation software, because the SW is limited by the C# language.
 
+A simple example of exporting and importing a shared library that generates an array of random rational numbers, see the "Simple Demonstration" section below. More detailed programs can be found in the repository folders (see the project hierarchy).
+
 **A useful hint about creating a C# program in Visual Studio Code:**
 1. Install .NET X.X if it is not already installed.
 
@@ -48,6 +50,24 @@ $ dotnet build
 4. Run C# code
 ```bash 
 $ dotnet run
+```
+
+## Project Hierarchy:
+**Repositary [/Cpp_Shared_Library_Overview/src]:**
+```bash
+
+1\ 
+Description:
+    Shared library.
+[/Cpp_Shared_Lib/Example_Lib_Shared.cpp]
+
+2\ 
+Description:
+    Simple tests to verify functionality.
+    
+Language = Cpp, Csharp/Main, Python;
+[/Test/{Language}/]
+
 ```
 
 ## Simple Demonstration
