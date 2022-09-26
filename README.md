@@ -30,7 +30,7 @@ Main challenges of project implementation:
 Link: https://dotnet.microsoft.com/download
 
 Then confirm that dotnet is installed.
-```
+```bash
 $ dotnet --version
 ```
 2. Create a new C# project
