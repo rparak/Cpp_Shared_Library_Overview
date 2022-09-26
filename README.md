@@ -1,4 +1,4 @@
-# Cpp_DLL_Helper
+# Brief Overview of Creating a Shared Library (.dll / .so) in C++
 
 ## Requirements:
 
@@ -232,3 +232,8 @@ Example_SL.Generate_Random_Array.restype  = ct.POINTER(ct.c_double)
 print(Example_SL.Generate_Random_Array(1.0, 10.0, 5)[0:5])
 ```
 
+## Contact Info:
+Roman.Parak@outlook.com
+
+## License
+[MIT](https://choosealicense.com/licenses/mit/)
