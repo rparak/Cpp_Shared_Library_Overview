@@ -109,6 +109,17 @@ Python: main.py
 
 **Creating and exporting a shared C++ library:**
 ```cpp 
+
+/*
+Description:
+    Define a shared library export for any platform.
+ */
+#ifdef _WIN32
+# define DLL_EXPORT_TYP __declspec(dllexport)
+#else
+# define DLL_EXPORT_TYP
+#endif
+
 #include <iostream>
 #include <ctime>
 
@@ -121,7 +132,7 @@ Note:
 */
 
 extern "C" {
-    __declspec(dllexport) double* Generate_Random_Array(const double MIN, const double MAX, const size_t N)
+    DLL_EXPORT_TYP double* Generate_Random_Array(const double MIN, const double MAX, const size_t N)
     {
         /*
         Description:
