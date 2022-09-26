@@ -30,21 +30,21 @@ Main challenges of project implementation:
 Link: https://dotnet.microsoft.com/download
 
 Then confirm that dotnet is installed.
-```bash 
-dotnet --version
+```
+$ dotnet --version
 ```
 2. Create a new C# project
 ```bash 
-dotnet new console -o Main
-cd Main
+$ dotnet new console -o Main
+$ cd Main
 ```
 3. Compile code
 ```bash 
-dotnet build
+$ dotnet build
 ```
 4. Run C# code
 ```bash 
-dotnet run
+$ dotnet run
 ```
 
 ## Simple Demonstration
