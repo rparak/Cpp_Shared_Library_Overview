@@ -29,6 +29,36 @@ A good example is importing a shared library in the Unity3D simulation software,
 
 A simple example of exporting and importing a shared library that generates an array of random rational numbers, see the "Simple Demonstration" section below. More detailed programs can be found in the repository folders (see the project hierarchy).
 
+**Running a program in different programming languages:**
+
+1\ Programming Language: C++ (.dll/.so)
+```bash
+Windows:
+    $ g++ -shared -std=c++17 -fPIC -o Shared_Lib_Name.dll Shared_Lib_Name.cpp
+Linux:
+    $ g++ -shared -std=c++17 -fPIC -o Shared_Lib_Name.so Shared_Lib_Name.cpp
+```
+
+2\ Programming Language: C++
+```bash
+   $ g++ -std=c++17 main.cpp -o main -ldl
+   $ ./main
+```
+
+2\ Programming Language: C#
+```bash
+   $ dotnet build
+   $ dotnet run
+```
+
+2\ Programming Language: Python
+```bash
+Windows:
+    $ py -3.6 main.py
+Linux:
+    $ python3 main.py
+```
+
 **A useful information about creating and running a C# program in Visual Studio Code:**
 1. Install .NET X.X if it is not already installed.
 
@@ -80,55 +110,39 @@ Python: main.py
 **Creating and exporting a shared C++ library:**
 ```cpp 
 #include <iostream>
-#include <iterator>
-#include <vector>
-#include <dlfcn.h>
+#include <ctime>
 
 /*
- Note:
-   $ g++ -std=c++17 main.cpp -o main -ldl
-   $ ./main
- */
+Note:
+    Windows:
+        $ g++ -shared -std=c++17 -fPIC -o Shared_Lib_Name.dll Shared_Lib_Name.cpp
+    Linux:
+        $ g++ -shared -std=c++17 -fPIC -o Shared_Lib_Name.so Shared_Lib_Name.cpp
+*/
 
-/*
-Description:
-    Specify the required argument types and return types of the functions.
- */
 extern "C" {
-    typedef double* (*Generate_Random_Array_Typ)(const double MIN, const double MAX, const size_t N);
-}
+    __declspec(dllexport) double* Generate_Random_Array(const double MIN, const double MAX, const size_t N)
+    {
+        /*
+        Description:
+            Generate a randomly defined array from the input parameters of the function.
+        Args:
+            (1) MIN [double]: The minimum value in the array.
+            (2) MAX [double]: The maximum value in the array.
+            (3) N [size_t]: The size of an array.
+        Returns:
+            (1) parameter [double*]: Random array of values.
+        */
 
-// Shared library type:
-//   DLL: Windows
-//   SO: Linux
-const std::string CONST_SHARED_LIB_TYP = "dll";
+        std::srand(time(0)); 
 
-int main() {
-    // The path to a shared library.
-    std::string shared_lib_path = "Shared_Lib_Name." + CONST_SHARED_LIB_TYP;
+        double* Output = new double[N];
+        for(auto i = 0; i < N; ++i){
+            Output[i] = static_cast<double>(MIN + (double)(rand()) / ((double)(RAND_MAX/(MAX - MIN))));
+        }
 
-    // Access to an executable object file (load the shared library - .dll/.so).
-    void* Example_SL = dlopen(shared_lib_path.c_str(), RTLD_LAZY);
-
-    // Declaration of shared library function.
-    Generate_Random_Array_Typ Generate_Random_Array = (Generate_Random_Array_Typ)dlsym(Example_SL, "Generate_Random_Array"); 
-
-    // Generate a randomly defined array from the input parameters of the function.
-    const size_t SIZE = 5;
-    double *Arr_Rand = Generate_Random_Array(1.0, 10.0, SIZE);
-
-    // Display an array with defined rules.
-    std::vector<double> v(Arr_Rand, Arr_Rand + 5);
-    std::cout << "[";
-    std::copy(v.begin(), v.end() - 1, std::ostream_iterator<double>(std::cout << std::scientific, ", "));
-    std::cout << v.back() << "]" << std::endl;
-
-    // Frees memory.
-    delete Arr_Rand;
-    Arr_Rand = NULL;
-
-    // Close a dlopen object.
-    dlclose(Example_SL);
+        return Output;
+    }
 }
 ```
 
