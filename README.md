@@ -27,7 +27,7 @@ The project can be used as a guide to create a custom application that is limite
 
 A good example is importing a shared library in the Unity3D simulation software, because the SW is limited by the C# language.
 
-A simple example of exporting and importing a shared library that generates an array of random rational numbers, see the "Simple Demonstration" section below. More detailed programs can be found in the repository folders (see the project hierarchy).
+For a simple example of exporting and importing a shared library that generates an array of random rational numbers, see the "Simple Demonstration" section below. More detailed programs can be found in the repository folders (see the project hierarchy).
 
 **Running a program in different programming languages:**
 
