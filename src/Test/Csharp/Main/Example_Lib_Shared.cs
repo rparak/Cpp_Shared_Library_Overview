@@ -59,7 +59,7 @@ namespace Example_Lib_Shared
 
             Args:
                 (1) Array [IntPtr]: Input array of values.
-                (2) N [int]: The size of the array.
+                (2) N [int]: The size of an array.
              */
             public IntPtr Array;
             public int N;
