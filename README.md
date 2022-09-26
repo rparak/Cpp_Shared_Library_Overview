@@ -21,8 +21,11 @@ Windows, Linux
 ## Project Description:
 A simple demonstration that shows how to create and export a shared library from a C/C++ programming language and import it into another programming language (Python, C#, C++).
 
-Main challenges of project implementation:
-- object manipulation using a smart gripper (ABB), simple vacuum gripper
+The main goal of the project is to demonstrate the calling of various functions/classes from a shared library (C/C++), as well as the use of C++ templates in this particular problem. 
+
+The project can be used as a guide to create a custom application that is limited by the type of programming language or the number of appropriate functions, but it would be useful to use the C++ programming language to speed up calculations or something else. 
+
+A good example is importing a shared library in the Unity3D simulation software, because the SW is limited by the C# language.
 
 **A useful hint about creating a C# program in Visual Studio Code:**
 1. Install .NET X.X if it is not already installed.
