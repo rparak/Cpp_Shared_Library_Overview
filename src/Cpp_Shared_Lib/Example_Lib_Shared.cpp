@@ -23,6 +23,20 @@ Github   : https://github.com/rparak
 File Name: Example_Lib_Shared.cpp
 ****************************************************************************/
 
+/*
+Description:
+    Define a shared library export for any platform.
+ */
+#ifdef _WIN32
+# ifdef WIN_EXPORT
+#   define DLL_EXPORT_TYP __declspec(dllexport)
+# else
+#   define DLL_EXPORT_TYP __declspec(dllimport)
+# endif
+#else
+# define DLL_EXPORT_TYP
+#endif
+
 #include <iostream>
 #include <ctime>
 #include <cstring> 
@@ -148,7 +162,7 @@ class Simple_Calculator {
 };
 
 extern "C" { 
-    __declspec(dllexport) int* Generate_Random_Array(const int MIN, const int MAX, const size_t N)
+    DLL_EXPORT_TYP int* Generate_Random_Array(const int MIN, const int MAX, const size_t N)
     {
         /*
         Description:
@@ -173,7 +187,7 @@ extern "C" {
         return Output;
     }
     
-     __declspec(dllexport) void Multiply_Array_By_Number(const int Number, int *Array, const size_t N) 
+     DLL_EXPORT_TYP void Multiply_Array_By_Number(const int Number, int *Array, const size_t N) 
      { 
         /*
         Description:
@@ -193,7 +207,7 @@ extern "C" {
         }
     }
 
-    __declspec(dllexport) FCE_ARRAY_MinMax_OUTPUT_Str<int> Array_MinMax(FCE_ARRAY_MinMax_INPUT_Str<int>* Input, const bool return_min_val)
+    DLL_EXPORT_TYP FCE_ARRAY_MinMax_OUTPUT_Str<int> Array_MinMax(FCE_ARRAY_MinMax_INPUT_Str<int>* Input, const bool return_min_val)
     {
         /*
         Description:
@@ -231,12 +245,12 @@ extern "C" {
         Multiple functions to demonstrate how to work with a class to create a shared library. More information about the class 
         can be found above.
      */
-    __declspec(dllexport) Simple_Calculator<int>* SC_Class_Create(const int Param_1, const int Param_2)
+    DLL_EXPORT_TYP Simple_Calculator<int>* SC_Class_Create(const int Param_1, const int Param_2)
 	{
 		return new Simple_Calculator<int>(Param_1, Param_2);
 	}
 
-    __declspec(dllexport) void SC_Class_Delete(Simple_Calculator<int>* SC_Cls)
+    DLL_EXPORT_TYP void SC_Class_Delete(Simple_Calculator<int>* SC_Cls)
 	{
         if(SC_Cls){
 		    delete SC_Cls;
@@ -244,12 +258,12 @@ extern "C" {
         }
 	}
 
-    __declspec(dllexport) char* SC_Class_Get_Parameters(Simple_Calculator<int>* SC_Cls)
+    DLL_EXPORT_TYP char* SC_Class_Get_Parameters(Simple_Calculator<int>* SC_Cls)
 	{
         return SC_Cls->Get_Parameters();
 	}
 
-    __declspec(dllexport) bool SC_Class_Set_Parameters(Simple_Calculator<int>* SC_Cls, const int Param_1, const int Param_2)
+    DLL_EXPORT_TYP bool SC_Class_Set_Parameters(Simple_Calculator<int>* SC_Cls, const int Param_1, const int Param_2)
 	{
         try {
             SC_Cls->Set_Parameters(Param_1, Param_2);
@@ -259,12 +273,12 @@ extern "C" {
         }
 	}
 
-    __declspec(dllexport) int SC_Class_Addition_Parameters(Simple_Calculator<int>* SC_Cls)
+    DLL_EXPORT_TYP int SC_Class_Addition_Parameters(Simple_Calculator<int>* SC_Cls)
 	{
         return SC_Cls->Addition();
 	}
 
-    __declspec(dllexport) int SC_Class_Substraction_Parameters(Simple_Calculator<int>* SC_Cls)
+    DLL_EXPORT_TYP int SC_Class_Substraction_Parameters(Simple_Calculator<int>* SC_Cls)
 	{
         return SC_Cls->Substraction();
 	}
