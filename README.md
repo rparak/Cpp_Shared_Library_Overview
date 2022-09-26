@@ -6,3 +6,5 @@ dotnet new console -o app
 cd app
 dotnet run
 dotnet build
+
+## Simple Demonstration
