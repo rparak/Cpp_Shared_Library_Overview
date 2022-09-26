@@ -19,8 +19,19 @@ Windows, Linux
 ```
 
 ## Project Description:
+A simple demonstration that shows how to create and export a shared library from a C/C++ programming language and import it into another programming language (Python, C#, C++).
 
-https://travis.media/how-to-run-csharp-in-vscode/
+Main challenges of project implementation:
+- object manipulation using a smart gripper (ABB), simple vacuum gripper
+
+**A useful hint about creating a C# program in Visual Studio Code:**
+1. Install .NET X.X if it is not already installed.
+Link: https://dotnet.microsoft.com/download
+
+Then confirm that dotnet is installed.
+```bash 
+dotnet --version
+```
 
 dotnet new console -o app
 cd app
@@ -28,9 +39,6 @@ dotnet run
 dotnet build
 
 ## Simple Demonstration
-
-**Description:**
-A simple demonstration that shows how to create and export a shared library from a C/C++ programming language and import it into another programming language (Python, C#, C++).
 
 **Creating and exporting a shared C++ library:**
 ```cpp 
