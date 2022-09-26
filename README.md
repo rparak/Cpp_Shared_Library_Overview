@@ -32,7 +32,57 @@ dotnet build
 **Description:**
 A simple demonstration that shows how to create and export a shared library from a C/C++ programming language and import it into another programming language (Python, C#, C++).
 
-**C++ Shared Lib.:**
+**Creating a shared C++ library:**
 ```bash 
-  text ...
+#include <iostream>
+#include <iterator>
+#include <vector>
+#include <dlfcn.h>
+
+/*
+ Note:
+   $ g++ -std=c++17 main.cpp -o main -ldl
+   $ ./main
+ */
+
+/*
+Description:
+    Specify the required argument types and return types of the functions.
+ */
+extern "C" {
+    typedef double* (*Generate_Random_Array_Typ)(const double MIN, const double MAX, const size_t N);
+}
+
+// Shared library type:
+//   DLL: Windows
+//   SO: Linux
+const std::string CONST_SHARED_LIB_TYP = "dll";
+
+int main() {
+    // The path to a shared library.
+    std::string shared_lib_path = "Shared_Lib_Name." + CONST_SHARED_LIB_TYP;
+
+    // Access to an executable object file (load the shared library - .dll/.so).
+    void* Example_SL = dlopen(shared_lib_path.c_str(), RTLD_LAZY);
+
+    // Declaration of shared library function.
+    Generate_Random_Array_Typ Generate_Random_Array = (Generate_Random_Array_Typ)dlsym(Example_SL, "Generate_Random_Array"); 
+
+    // Generate a randomly defined array from the input parameters of the function.
+    const size_t SIZE = 5;
+    double *Arr_Rand = Generate_Random_Array(1.0, 10.0, SIZE);
+
+    // Display an array with defined rules.
+    std::vector<double> v(Arr_Rand, Arr_Rand + 5);
+    std::cout << "[";
+    std::copy(v.begin(), v.end() - 1, std::ostream_iterator<double>(std::cout << std::scientific, ", "));
+    std::cout << v.back() << "]" << std::endl;
+
+    // Frees memory.
+    delete Arr_Rand;
+    Arr_Rand = NULL;
+
+    // Close a dlopen object.
+    dlclose(Example_SL);
+}
 ```
