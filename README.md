@@ -59,7 +59,10 @@ $ dotnet run
 1\ 
 Description:
     Shared library.
-[/Cpp_Shared_Lib/Example_Lib_Shared.cpp]
+[/Cpp_Shared_Lib/]
+Cpp: Example_Lib_Shared.cpp
+DLL: Example_Lib_Shared.dll
+SO: Example_Lib_Shared.so
 
 2\ 
 Description:
@@ -67,6 +70,12 @@ Description:
     
 Language = Cpp, Csharp/Main, Python;
 [/Test/{Language}/]
+Cpp: Example_Lib_Shared.hpp
+Cpp: main.cpp
+Csharp/Main: Example_Lib_Shared.cs
+Csharp/Main: Program.cs
+Python: Example_Lib_Shared.py
+Python: main.py
 
 ```
 
