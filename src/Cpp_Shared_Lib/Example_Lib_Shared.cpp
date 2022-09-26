@@ -51,7 +51,7 @@ struct FCE_ARRAY_MinMax_INPUT_Str{
 
     Args:
         (1) Array [T* <data_type>]: Input array of values.
-        (2) N [size_t]: The size of the array.
+        (2) N [size_t]: The size of an array.
      */
     T *Array;
     size_t N;
@@ -157,7 +157,7 @@ extern "C" {
         Args:
             (1) MIN [int]: The minimum value in the array.
             (2) MAX [int]: The maximum value in the array.
-            (3) N [size_t]: The size of the array.
+            (3) N [size_t]: The size of an array.
 
         Returns:
             (1) parameter [int*]: Random array of values.
@@ -182,7 +182,7 @@ extern "C" {
         Args:
             (1) Number [int]: The number that is used to multiply the value in the array.
             (2) Array [int*]: Input/Output array of values.
-            (3) N [size_t]: The size of the array.
+            (3) N [size_t]: The size of an array.
         */
 
         int x_temp;
