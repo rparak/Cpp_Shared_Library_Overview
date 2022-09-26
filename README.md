@@ -89,12 +89,118 @@ int main() {
 
 **Importing and testing a shared library in C++:**
 ```cpp
+#include <iostream>
+#include <iterator>
+#include <vector>
+#include <dlfcn.h>
 
+/*
+ Note:
+   $ g++ -std=c++17 main.cpp -o main -ldl
+   $ ./main
+ */
+
+/*
+Description:
+    Specify the required argument types and return types of the functions.
+ */
+extern "C" {
+    typedef double* (*Generate_Random_Array_Typ)(const double MIN, const double MAX, const size_t N);
+}
+
+// Shared library type:
+//   DLL: Windows
+//   SO: Linux
+const std::string CONST_SHARED_LIB_TYP = "dll";
+
+int main() {
+    // The path to a shared library.
+    std::string shared_lib_path = "Shared_Lib_Name." + CONST_SHARED_LIB_TYP;
+
+    // Access to an executable object file (load the shared library - .dll/.so).
+    void* Example_SL = dlopen(shared_lib_path.c_str(), RTLD_LAZY);
+
+    // Declaration of shared library function.
+    Generate_Random_Array_Typ Generate_Random_Array = (Generate_Random_Array_Typ)dlsym(Example_SL, "Generate_Random_Array"); 
+
+    // Generate a randomly defined array from the input parameters of the function.
+    const size_t SIZE = 5;
+    double *Arr_Rand = Generate_Random_Array(1.0, 10.0, SIZE);
+
+    // Display an array with defined rules.
+    std::vector<double> v(Arr_Rand, Arr_Rand + 5);
+    std::cout << "[";
+    std::copy(v.begin(), v.end() - 1, std::ostream_iterator<double>(std::cout << std::scientific, ", "));
+    std::cout << v.back() << "]" << std::endl;
+
+    // Frees memory.
+    delete Arr_Rand;
+    Arr_Rand = NULL;
+
+    // Close a dlopen object.
+    dlclose(Example_SL);
+}
 ```
 
 **Importing and testing a shared library in C#:**
 ```cs
+// System Lib.
+using System;
+using System.Collections.Generic;
+using System.Runtime.InteropServices;
 
+/*
+ Note:
+   $ dotnet build
+   $ dotnet run
+ */
+
+namespace Main
+{
+    class Program
+    {
+        // Shared library type:
+        //   DLL: Windows
+        //   SO: Linux
+        const string CONST_SHARED_LIB_TYP = "dll";
+        // The path to a shared library.
+        const string shared_lib_path = "..//Shared_Lib_Name." + CONST_SHARED_LIB_TYP;
+
+        // Generate a randomly defined array from the input parameters of the function.
+        [DllImport(shared_lib_path, EntryPoint = "Generate_Random_Array", ExactSpelling = false, CallingConvention = CallingConvention.Cdecl)]
+        public static extern IntPtr Generate_Random_Array(double MIN, double MAX, int N);
+
+        static void Main(string[] args)
+        {
+            // Generate a randomly defined array from the input parameters of the function.
+            int SIZE = 5;
+            IntPtr Arr_Rand_Ptr = Generate_Random_Array(1.0, 10.0, SIZE);
+            // Display an array with defined rules.
+            double[] Arr_Rand = IntPtr_To_Array<double>(Arr_Rand_Ptr, SIZE);
+            Console.WriteLine("[{0}]", string.Join(", ", Arr_Rand));
+
+            // Frees memory.
+            Marshal.FreeHGlobal(Arr_Rand_Ptr);
+        }
+
+        public static T[] IntPtr_To_Array<T>(IntPtr Array, int N)
+        {
+            /*
+            Description:
+                A simple function to convert an IntPtr type to an array.
+            Args:
+                (1) Array [IntPtr]: Input array (pointer) of values.
+                (2) N [size_t]: The size of the array.
+            Returns:
+                (1) parameter [T[]]: Output converted array of values.
+             */
+            dynamic Array_Out = new T[N];
+            Marshal.Copy(Array, Array_Out, 0, Array_Out.Length);
+
+            return Array_Out;
+        }
+    }
+}
 ```
 
 **Importing and testing a shared library in Python:**
