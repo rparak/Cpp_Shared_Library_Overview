@@ -28,3 +28,11 @@ dotnet run
 dotnet build
 
 ## Simple Demonstration
+
+**Description:**
+A simple demonstration that shows how to create and export a shared library from a C/C++ programming language and import it into another programming language (Python, C#, C++).
+
+**C++ Shared Lib.:**
+```bash 
+  text ...
+```
