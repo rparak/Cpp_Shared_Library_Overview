@@ -26,17 +26,26 @@ Main challenges of project implementation:
 
 **A useful hint about creating a C# program in Visual Studio Code:**
 1. Install .NET X.X if it is not already installed.
+
 Link: https://dotnet.microsoft.com/download
 
 Then confirm that dotnet is installed.
 ```bash 
 dotnet --version
 ```
-
-dotnet new console -o app
-cd app
-dotnet run
+2. Create a new C# project
+```bash 
+dotnet new console -o Main
+cd Main
+```
+3. Compile code
+```bash 
 dotnet build
+```
+4. Run C# code
+```bash 
+dotnet run
+```
 
 ## Simple Demonstration
 
