@@ -29,7 +29,7 @@ A good example is importing a shared library in the Unity3D simulation software,
 
 A simple example of exporting and importing a shared library that generates an array of random rational numbers, see the "Simple Demonstration" section below. More detailed programs can be found in the repository folders (see the project hierarchy).
 
-**A useful hint about creating a C# program in Visual Studio Code:**
+**A useful information about creating and running a C# program in Visual Studio Code:**
 1. Install .NET X.X if it is not already installed.
 
 Link: https://dotnet.microsoft.com/download
