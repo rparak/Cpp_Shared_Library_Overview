@@ -86,3 +86,33 @@ int main() {
     dlclose(Example_SL);
 }
 ```
+
+**Importing and testing a shared library in Python:**
+```py 
+# CTypes (C compatible data types, and allows calling functions in DLLs)
+import ctypes as ct
+
+"""
+Note:
+    Windows:
+        $ py -3.6 main.py
+    Linux:
+        $ python3 main.py
+"""
+
+# Shared library type:
+#   DLL: Windows
+#   SO: Linux
+CONST_SHARED_LIB_TYP = 'dll'
+
+# Load the shared library (.dll/.so).
+Example_SL = ct.cdll.LoadLibrary(f'Shared_Lib_Name.{CONST_SHARED_LIB_TYP}')
+
+# Specify the required argument types and return types of the function.
+Example_SL.Generate_Random_Array.argtypes = [ct.c_double, ct.c_double, ct.c_size_t]
+Example_SL.Generate_Random_Array.restype  = ct.POINTER(ct.c_double)
+
+# Generate a randomly defined array from the input parameters of the function.
+print(Example_SL.Generate_Random_Array(1.0, 10.0, 5)[0:5])
+```
+
