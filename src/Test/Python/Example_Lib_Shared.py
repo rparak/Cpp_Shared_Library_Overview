@@ -51,7 +51,7 @@ def Generate_Random_Array(MIN, MAX, N):
     Args:
         (1) MIN [int]: The minimum value in the array.
         (2) MAX [int]: The maximum value in the array.
-        (3) N [size_t]: The size of the array.
+        (3) N [size_t]: The size of an array.
 
     Returns:
         (1) parameter [int array]: Random array of values.
@@ -96,7 +96,7 @@ class FCE_ARRAY_MinMax_INPUT_Str(ct.Structure):
 
     Args:
         (1) Array [int array]: Input array of values.
-        (2) N [size_t]: The size of the array.
+        (2) N [size_t]: The size of an array.
     """
     _fields_ = [('Array', ct.POINTER(ct.c_int)), 
                 ('N', ct.c_size_t)]
