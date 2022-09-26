@@ -32,7 +32,7 @@ dotnet build
 **Description:**
 A simple demonstration that shows how to create and export a shared library from a C/C++ programming language and import it into another programming language (Python, C#, C++).
 
-**Creating a shared C++ library:**
+**Creating and exporting a shared C++ library:**
 ```cpp 
 #include <iostream>
 #include <iterator>
@@ -85,6 +85,16 @@ int main() {
     // Close a dlopen object.
     dlclose(Example_SL);
 }
+```
+
+**Importing and testing a shared library in C++:**
+```cpp
+
+```
+
+**Importing and testing a shared library in C#:**
+```cs
+
 ```
 
 **Importing and testing a shared library in Python:**
