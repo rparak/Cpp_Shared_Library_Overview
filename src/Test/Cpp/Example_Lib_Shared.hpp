@@ -44,7 +44,7 @@ struct FCE_ARRAY_MinMax_INPUT_Str{
 
     Args:
         (1) Array [T* <data_type>]: Input array of values.
-        (2) N [size_t]: The size of the array.
+        (2) N [size_t]: The size of an array.
      */
     T *Array;
     size_t N;
